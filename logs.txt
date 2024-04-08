@@ -1,0 +1,105 @@
+1.mkdir SI_2024_lab1_212073
+2.cd SI_2024_lab1_212073
+3.git init
+4.git remote add origin https://github.com/de1u1u/SI_2024_lab1_212073.git
+5.echo "Andrea Cvetanova 212073" >> README.md
+6.git add README.md
+7.git commit -m "Initial commit"
+[master (root-commit) 21a2924] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+8.git add SILab1Main.java SILab1_2.java SILab1_1.java
+9.git commit -m "Add starter code"
+[master c659fc5] Add starter code
+ 3 files changed, 47 insertions(+)
+ create mode 100644 SILab1Main.java
+ create mode 100644 SILab1_1.java
+ create mode 100644 SILab1_2.java
+10.git fetch origin
+11.git push origin --all
+12.git branch bug1
+13.git branch bug2
+14.git branch
+  bug1
+  bug2
+* master
+15.git checkout bug1
+Switched to branch 'bug1'
+16.git add SILab1_1.java(по промената во метоодот filterOddLengthStrings)
+17.git commit -m "Fix wrong condition in filterOddLengthStrings"
+
+18.git push
+fatal: The current branch bug1 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin bug1
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+19.git push --set-upstream origin bug1
+
+20.git checkout bug2
+21.git add SILab1_2.java(по промената во метоодот makeBigStringFrom)
+22.git commit -m "Fix wrong condition in makeBigStringFrom"
+23.git push --set-upstream origin bug2
+24.git checkout bug1
+25.git add SILab1Main.java(по додавање повик до статичкиот метод filterOddLengthStrings)
+26.git commit -m "Call method filterOddLengthStrings in main class"
+27.git push
+28.git checkout bug2
+29.git add SILab1Main.java(по додавање повик до статичкиот метод makeBigStringFrom)
+30.git commit -m "Call method makeBigStringFrom in main class"
+31.git push
+32.git checkout master
+33.git push origin --all
+Everything up-to-date
+34.git status
+On branch master
+nothing to commit, working tree clean
+35.git merge bug1
+Updating c659fc5..e16342a
+Fast-forward
+ SILab1Main.java | 2 +-
+ SILab1_1.java   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+36.git commit
+37.git push origin master
+38.git checkout bug2
+
+39.git rebase master
+Auto-merging SILab1Main.java
+CONFLICT (content): Merge conflict in SILab1Main.java
+error: could not apply b1c65dd... Call method makeBigStringFrom in main class
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply b1c65dd... Call method makeBigStringFrom in main class
+
+40.git push origin bug2 --force
+
+41.git checkout master
+SILab1Main.java: needs merge
+error: you need to resolve your current index first
+
+42.git fetch origin
+43.git reset --hard origin/master
+HEAD is now at e16342a Call method filterOddLengthStrings in main class
+
+44.git merge bug2
+Auto-merging SILab1Main.java
+CONFLICT (content): Merge conflict in SILab1Main.java
+Automatic merge failed; fix conflicts and then commit the result.
+
+45.git add SILab1Main.java
+46.git commit -m "Resolve conflicts in SILab1Main.java"
+[master e1ff685] Resolve conflicts in SILab1Main.java
+
+47.git merge bug2
+Already up to date.
+48.git merge --no-ff bug2
+
+49.git rebase --continue
+Successfully rebased and updated refs/heads/bug2.
+50.git push origin --all
